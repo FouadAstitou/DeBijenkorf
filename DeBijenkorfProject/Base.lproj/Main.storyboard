@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dpc-ws-bQM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="DeBijenkorfProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +18,170 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="deBijenkorfLogo" translatesAutoresizingMaskIntoConstraints="NO" id="KJL-uD-HNP">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="G8b-3M-vSW"/>
+                                    <constraint firstAttribute="height" constant="200" id="ej0-g0-1cv"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="KJL-uD-HNP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Rmx-2z-ChR"/>
+                            <constraint firstItem="KJL-uD-HNP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="axM-Wh-udA"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Kuw-KR-2tJ">
+                        <nil key="title"/>
+                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for products" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" id="Uvi-cx-sJu">
+                            <rect key="frame" x="113" y="7" width="150" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <barButtonItem key="rightBarButtonItem" title="Search" id="fil-7b-XJl">
+                            <color key="tintColor" red="0.99178685899999997" green="0.99178685899999997" blue="0.99178685899999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="searchButtonTapped:" destination="BYZ-38-t0r" id="08w-jg-CaP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="logoImage" destination="KJL-uD-HNP" id="1jq-Wh-sDX"/>
+                        <outlet property="searchButton" destination="fil-7b-XJl" id="X7Z-uH-07E"/>
+                        <outlet property="searchTextField" destination="Uvi-cx-sJu" id="92u-iw-EpH"/>
+                        <segue destination="2aw-Jf-vw8" kind="show" identifier="Manual" id="Ua0-zW-56x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="930" y="198"/>
+        </scene>
+        <!--Items List View Controller-->
+        <scene sceneID="iZE-9i-PPe">
+            <objects>
+                <viewController storyboardIdentifier="ItemsListViewController" id="2aw-Jf-vw8" customClass="ItemsListViewController" customModule="DeBijenkorfProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TcM-Lf-fSN"/>
+                        <viewControllerLayoutGuide type="bottom" id="f0f-ei-mUQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oi3-xl-MGN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DXy-co-N7d">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xr8-ve-3Gs">
+                                    <size key="itemSize" width="167" height="300"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="8" minY="8" maxX="8" maxY="8"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="LDn-Ua-QNw" customClass="ItemCell" customModule="DeBijenkorfProject" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="8" width="167" height="300"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="167" height="300"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" image="deBijenkorfLogo" translatesAutoresizingMaskIntoConstraints="NO" id="gPa-3L-Cfa">
+                                                    <color key="tintColor" red="0.95686274510000002" green="0.59999999999999998" blue="0.031372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPQ-DF-epi">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="19" id="47E-jd-HCQ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMr-FC-xkn">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="19" id="HyC-Du-R1N"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrn-Ll-66Z">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="oot-eI-JOh"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="lrn-Ll-66Z" firstAttribute="trailing" secondItem="dPQ-DF-epi" secondAttribute="trailing" id="6cK-0q-4c7"/>
+                                            <constraint firstItem="vMr-FC-xkn" firstAttribute="trailing" secondItem="lrn-Ll-66Z" secondAttribute="trailing" id="BUl-HW-lVS"/>
+                                            <constraint firstItem="lrn-Ll-66Z" firstAttribute="top" secondItem="vMr-FC-xkn" secondAttribute="bottom" id="CtL-70-zHA"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="dPQ-DF-epi" secondAttribute="bottom" constant="7" id="Hu8-az-YEV"/>
+                                            <constraint firstItem="vMr-FC-xkn" firstAttribute="top" secondItem="gPa-3L-Cfa" secondAttribute="bottom" constant="8" symbolic="YES" id="KRy-E9-Qci"/>
+                                            <constraint firstItem="gPa-3L-Cfa" firstAttribute="top" secondItem="LDn-Ua-QNw" secondAttribute="top" id="KXu-hp-dFq"/>
+                                            <constraint firstItem="gPa-3L-Cfa" firstAttribute="trailing" secondItem="vMr-FC-xkn" secondAttribute="trailing" id="LNC-En-Upd"/>
+                                            <constraint firstItem="gPa-3L-Cfa" firstAttribute="leading" secondItem="vMr-FC-xkn" secondAttribute="leading" id="S9z-Xv-xHG"/>
+                                            <constraint firstItem="dPQ-DF-epi" firstAttribute="top" secondItem="lrn-Ll-66Z" secondAttribute="bottom" constant="8" symbolic="YES" id="XbK-b8-cFV"/>
+                                            <constraint firstItem="lrn-Ll-66Z" firstAttribute="leading" secondItem="dPQ-DF-epi" secondAttribute="leading" id="aA6-fK-Bbo"/>
+                                            <constraint firstItem="gPa-3L-Cfa" firstAttribute="leading" secondItem="LDn-Ua-QNw" secondAttribute="leading" id="c0h-i1-YUe"/>
+                                            <constraint firstAttribute="trailing" secondItem="gPa-3L-Cfa" secondAttribute="trailing" id="wkM-2R-kjo"/>
+                                            <constraint firstItem="vMr-FC-xkn" firstAttribute="leading" secondItem="lrn-Ll-66Z" secondAttribute="leading" id="z7w-Jt-83a"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="itemBrandName" destination="vMr-FC-xkn" id="di1-kj-Kv6"/>
+                                            <outlet property="itemImage" destination="gPa-3L-Cfa" id="u1b-jT-80V"/>
+                                            <outlet property="itemName" destination="lrn-Ll-66Z" id="TCA-Qo-qQF"/>
+                                            <outlet property="itemPrice" destination="dPQ-DF-epi" id="hp7-IU-SNV"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DXy-co-N7d" secondAttribute="trailing" id="Gc7-Zr-REs"/>
+                            <constraint firstItem="DXy-co-N7d" firstAttribute="leading" secondItem="oi3-xl-MGN" secondAttribute="leading" id="GtW-bv-XTu"/>
+                            <constraint firstItem="f0f-ei-mUQ" firstAttribute="top" secondItem="DXy-co-N7d" secondAttribute="bottom" id="IS9-1C-fnl"/>
+                            <constraint firstItem="DXy-co-N7d" firstAttribute="top" secondItem="oi3-xl-MGN" secondAttribute="top" id="dHx-pp-5jx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="listCollectionView" destination="DXy-co-N7d" id="OmK-yp-Zzh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w0x-DE-hcW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2017" y="28"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dA4-S2-U3M">
+            <objects>
+                <navigationController id="dpc-ws-bQM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GXq-FD-HZU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.99178685899999997" green="0.99178685899999997" blue="0.99178685899999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.99178685899999997" green="0.99178685899999997" blue="0.99178685899999997" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="a5P-IC-pYP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AtN-RA-FGs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="48.799999999999997" y="-644.52773613193403"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="deBijenkorfLogo" width="96" height="96"/>
+    </resources>
 </document>
