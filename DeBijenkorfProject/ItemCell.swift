@@ -10,6 +10,7 @@ import UIKit
 
 class ItemCell: UICollectionViewCell {
    
+    // MARK: - Outlets
     @IBOutlet var itemImage: UIImageView!
     @IBOutlet var itemBrandName: UILabel!
     @IBOutlet var itemName: UILabel!

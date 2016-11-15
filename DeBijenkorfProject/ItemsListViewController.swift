@@ -7,16 +7,18 @@
 //
 
 import UIKit
-import SafariServices
 
 class ItemsListViewController: UIViewController {
     
+    // MARK: - Outlets
     @IBOutlet var listCollectionView: UICollectionView!
     
+    // MARK: - Properties
     let itemDataSource = ItemDataSource()
     var items = [Item]()
     var searchTerm = ""
     
+    // MARK: - View Setup
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,10 +27,9 @@ class ItemsListViewController: UIViewController {
         
         self.title = self.searchTerm
         self.loadData()
-
-        print(items.count)
     }
     
+    // MARK: - loadData
     func loadData() {
         API.fetchItemsFor(searchTerm: self.searchTerm) { (itemsResult) in
             DispatchQueue.main.async {
@@ -42,24 +43,26 @@ class ItemsListViewController: UIViewController {
                 case let .Failure(error):
                     self.itemDataSource.items.removeAll()
                     print("Error fetching items for search term: \(self.searchTerm), error: \(error)")
+                    
+                case .None:
+                    break
                 }
                 self.listCollectionView.reloadData()
             }
-            
         }
     }
 }
 
-extension ItemsListViewController: UICollectionViewDelegateFlowLayout {
+//MARK: - Extension UICollectionViewDelegate
+extension ItemsListViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         return CGSize(width: self.listCollectionView.bounds.size.width / 2.0 - 14.0 , height: 300)
     }
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let item = self.itemDataSource.items[indexPath.item]
-        self.loadInSafari(urlString: item.itemURL)
+        self.loadInSafari(urlString: item.itemURL, hasToRedirect: false)
     }
 }
