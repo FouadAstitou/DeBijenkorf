@@ -282,7 +282,7 @@
 				DEVELOPMENT_TEAM = 75RQ64B2DZ;
 				INFOPLIST_FILE = DeBijenkorfProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = f.astitou.DeBijenkorfProject;
+				PRODUCT_BUNDLE_IDENTIFIER = f.astitou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -295,7 +295,7 @@
 				DEVELOPMENT_TEAM = 75RQ64B2DZ;
 				INFOPLIST_FILE = DeBijenkorfProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = f.astitou.DeBijenkorfProject;
+				PRODUCT_BUNDLE_IDENTIFIER = f.astitou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -320,6 +320,7 @@
 				2B62C23C1DD9BB1F0012002F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

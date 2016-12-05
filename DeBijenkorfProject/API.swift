@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 //MARK: - Error handeling
 enum ItemsResult {
@@ -64,9 +65,12 @@ struct API {
                 
                 if let jsonDictionary = json["data"] as? [String: AnyObject] {
                     if let redirectURL = jsonDictionary["redirectUrl"] as? String {
+                        print(redirectURL)
                         
                         redirectURLGlobal = redirectURL
                         hasToRedirect = true
+//                        let vc = HomeViewController()
+//                        vc.loadInSafari(urlString: redirectURL, hasToRedirect: true)
                     }
                     if let itemsArray = jsonDictionary["products"] as? [[String: AnyObject]] {                                                   var finalItems = [Item]()
                         for itemJSON in itemsArray {
@@ -75,7 +79,7 @@ struct API {
                             }
                         }
                         if finalItems.count == 0 && itemsArray.count > 0 {
-                            // We weren't able to parse any of the photos. Maybe the JSON format for photos has changed.
+                            // We weren't able to parse any of the items. Maybe the JSON format for the items has changed.
                             return .Failure(ItemError.InvalidJSONData)
                         }
                         return .Success(finalItems)
@@ -90,7 +94,7 @@ struct API {
     }
     
     // MARK: - itemFromJSONObject
-    /// Parses a JSON dictionary into a FlickrPhoto instance.
+    /// Parses a JSON dictionary into a item instance.
     static func itemFromJSONObject(json: [String : AnyObject]) -> Item? {
         guard
             let itemID = json["code"] as? String,
